@@ -1,0 +1,294 @@
+ <!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Kariyer | Yeni Nesil İş Platformu</title>
+    <!-- Modern Fontlar -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- İkon Seti -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Yeni Stil Dosyası -->
+    <link rel="stylesheet" href="css/nova.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR NAVİGASYON (Eski mainHeader yerine geçer) -->
+        <!-- JS bu ID'yi (mainHeader) kullanarak gizle/göster yapar -->
+        <aside class="sidebar" id="mainHeader" style="display: none;">
+            <div class="brand">
+                <button class="mobile-close-btn" onclick="toggleSidebar()"><i class="fa-solid fa-times"></i></button>
+                <i class="fa-solid fa-rocket"></i>
+                <span>Nova</span>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" onclick="showPage('jobs'); return false;" class="nav-item">
+                    <i class="fa-solid fa-briefcase"></i> İş İlanları
+                </a>
+                <a href="#" onclick="showPage('profile'); return false;" class="nav-item">
+                    <i class="fa-solid fa-user-circle"></i> Profilim
+                </a>
+            </nav>
+
+            <div class="user-actions">
+                <button onclick="logout()" class="btn-logout">
+                    <i class="fa-solid fa-sign-out-alt"></i> Çıkış Yap
+                </button>
+            </div>
+        </aside>
+
+        <!-- ANA İÇERİK ALANI -->
+        <main class="main-content">
+
+            <!-- Mobil Menü Butonu (Sadece mobilde görünür) -->
+            <button class="btn-hamburger" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Tema Değiştirme Butonu -->
+            <button id="themeToggle" class="btn-theme-toggle" onclick="toggleTheme()" title="Temayı Değiştir">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            
+            <!-- ANA SAYFA (LANDING) -->
+            <section id="home" class="page active">
+                <div class="hero-section">
+                    <h1>Hayalindeki İşe <br><span class="highlight">ATC kariyer</span> ile Ulaş</h1>
+                    <p>Binlerce iş ilanı ve yetenek tek bir platformda buluşuyor.</p>
+                    <div class="hero-buttons">
+                        <button onclick="showPage('login')" class="btn-primary">Giriş Yap / Kayıt Ol</button>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fa-solid fa-bolt"></i>
+                            <h3>Hızlı Başvuru</h3>
+                            <p>Tek tıkla ilanlara başvur.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h3>Güvenli</h3>
+                            <p>Verileriniz yerel olarak saklanır.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-users"></i>
+                            <h3>Geniş Ağ</h3>
+                            <p>Hem işveren hem çalışan dostu.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GİRİŞ / KAYIT -->
+            <section id="login" class="page">
+                <div class="auth-wrapper">
+                    <!-- Giriş Formu -->
+                    <div class="auth-card">
+                        <h2><i class="fa-solid fa-right-to-bracket"></i> Giriş Yap</h2>
+                        <div class="form-group">
+                            <label>Email Adresi</label>
+                            <input type="email" id="loginEmail" placeholder="ornek@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Şifre</label>
+                            <div class="password-container">
+                                <input type="password" id="loginPass" placeholder="******">
+                                <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('loginPass', this)"></i>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberMe">
+                                <label for="rememberMe">Beni Hatırla</label>
+                            </div>
+                            <a href="#" onclick="alert('Şifre sıfırlama bağlantısı e-postanıza gönderildi (Simüle edildi).'); return false;" class="forgot-link">Şifremi Unuttum</a>
+                        </div>
+                        <button onclick="login()" class="btn-primary full-width">Giriş Yap</button>
+                        
+                        <div class="divider"><span>veya şununla devam et</span></div>
+                        
+                        <div class="social-auth">
+                            <button class="btn-social google"><i class="fa-brands fa-google"></i></button>
+                            <button class="btn-social linkedin"><i class="fa-brands fa-linkedin-in"></i></button>
+                        </div>
+
+                        <div style="margin-top: 15px; text-align: center; font-size: 0.9rem;">
+                            Hesabın yok mu? <a href="#" onclick="showPage('register'); return false;" style="color: var(--primary); text-decoration: none; font-weight: 600;">Kayıt Ol</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- KAYIT SAYFASI (Ayrıldı) -->
+            <section id="register" class="page">
+                <div class="auth-wrapper">
+                    <div class="auth-card">
+                        <h2><i class="fa-solid fa-user-plus"></i> Kayıt Ol</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="regEmail" placeholder="yeni@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Şifre</label>
+                                <input type="password" id="regPass" placeholder="En az 4 karakter">
+                            </div>
+                            <div class="form-group">
+                                <label>Hesap Türü</label>
+                                <select id="regRole">
+                                    <option value="jobseeker">İş Arayan</option>
+                                    <option value="employer">İşveren</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Cinsiyet</label>
+                                <select id="regGender">
+                                    <option value="Erkek">Erkek</option>
+                                    <option value="Kadın">Kadın</option>
+                                    <option value="Erkek / Kız">Erkek / Kız</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label>Profil Fotoğrafı</label>
+                                <div class="reg-photo-container">
+                                    <img id="regPhotoPreview" src="https://via.placeholder.com/80" alt="Önizleme" class="reg-photo-preview">
+                                    <input type="file" id="regPhoto" accept="image/*" onchange="previewRegisterPhoto(event)">
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="register()" class="btn-secondary full-width">Kayıt Ol</button>
+                        <div style="margin-top: 15px; text-align: center; font-size: 0.9rem;">
+                            Zaten hesabın var mı? <a href="#" onclick="showPage('login'); return false;" style="color: var(--primary); text-decoration: none; font-weight: 600;">Giriş Yap</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- İŞ İLANLARI -->
+            <section id="jobs" class="page">
+                <header class="content-header">
+                    <h2>İş İlanları</h2>
+                    <p class="subtitle">Kariyerine uygun en iyi fırsatları keşfet.</p>
+                </header>
+
+                <div class="jobs-layout">
+                    <!-- Filtreleme Sidebar -->
+                    <aside class="filters-sidebar">
+                        <div class="filter-box">
+                            <h3><i class="fa-solid fa-filter"></i> Filtrele</h3>
+                            
+                            <div class="form-group">
+                                <label>Pozisyon</label>
+                                <input type="text" id="filterPozisyon" placeholder="Örn: Yazılımcı">
+                            </div>
+                            <div class="form-group">
+                                <label>Şehir</label>
+                                <input type="text" id="filterSehir" placeholder="Örn: İstanbul">
+                            </div>
+                            <div class="form-group">
+                                <label>Min. Maaş</label>
+                                <input type="number" id="filterMaas" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Cinsiyet</label>
+                                <select id="filterGender">
+                                    <option value="">Tümü</option>
+                                    <option value="Erkek">Erkek</option>
+                                    <option value="Kadın">Kadın</option>
+                                    <option value="Erkek / Kız">Erkek / Kız</option>
+                                </select>
+                            </div>
+                            <button onclick="filterJobs()" class="btn-primary full-width">Uygula</button>
+                        </div>
+
+                        <!-- İŞVEREN PANELİ -->
+                        <div class="filter-box employer-box">
+                            <h3><i class="fa-solid fa-plus-circle"></i> Yeni İlan Ekle</h3>
+                            <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Sadece İşverenler</p>
+                            
+                            <input type="text" id="pozisyon" placeholder="Pozisyon" class="mini-input">
+                            <input type="text" id="sirket" placeholder="Şirket Adı" class="mini-input">
+                            <input type="text" id="sehir" placeholder="Şehir" class="mini-input">
+                            <input type="number" id="maas" placeholder="Maaş" class="mini-input">
+                            <select id="gender" class="mini-input">
+                                <option value="Erkek">Erkek</option>
+                                <option value="Kadın">Kadın</option>
+                                <option value="Erkek / Kadın">Erkek / Kadın</option>
+                            </select>
+                            <button onclick="addJob()" class="btn-green full-width">Yayınla</button>
+                        </div>
+                    </aside>
+
+                    <!-- İlan Listesi -->
+                    <div class="jobs-listing">
+                        <table class="modern-table">
+                            <!-- jobs.js'in düzgün çalışması için görünmez bir başlık satırı (hack) -->
+                            <thead style="display:none;"><tr><th>Korumalı Satır</th></tr></thead>
+                            <tbody id="jobTable">
+                                <tr style="display:none;"><td>Korumalı Satır (JS silmesin diye)</td></tr>
+                                <!-- JS buraya satırları ekleyecek -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROFİL -->
+            <section id="profile" class="page">
+                <div class="profile-header-card">
+                    <div class="profile-avatar" id="profileAvatarContainer">
+                        <i class="fa-solid fa-user" id="profileDefaultIcon"></i>
+                        <img id="profileImage" src="" alt="Profil" style="display: none; width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profileEmail">kullanici@email.com</h2>
+                        <span class="badge" id="profileRole">Rol</span>
+                    </div>
+                </div>
+
+                <div class="profile-content-grid">
+                    <!-- Sol Panel: CV İşlemleri -->
+                    <div class="content-card">
+                        <h3><i class="fa-solid fa-file-pdf"></i> CV Durumu</h3>
+                        <p id="cvName" class="status-text">CV Yüklenmemiş</p>
+                        
+                        <label class="file-upload-btn">
+                            CV Yükle / Güncelle
+                            <input type="file" onchange="uploadCV(event)" accept=".pdf,.doc,.docx">
+                        </label>
+                    </div>
+
+                    <!-- Sağ Panel: İşveren Özel -->
+                    <div id="employerPanel" class="content-card" style="display: none;">
+                        <h3><i class="fa-solid fa-chart-line"></i> İşveren Paneli</h3>
+                        <p>İlanlarınıza gelen başvuruları aşağıda görebilirsiniz.</p>
+                    </div>
+                </div>
+                
+                <!-- Başvurular Listesi -->
+                <div id="dynamic-lists-area"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JS Yüklemeleri (Mevcut Dosyalar) -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/jobs.js"></script>
+    <script src="js/profile.js"></script>
+
+    <!-- Tema Kontrolü -->
+    <script>
+        // Sayfa yüklenirken tercihi kontrol et
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            const btn = document.querySelector('#themeToggle i');
+            if(btn) btn.className = 'fa-solid fa-moon';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Chrome ile Başlat (Dosya)",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/nova_index.html"
+        },
+        {
+            "name": "Chrome ile Başlat (Localhost)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}

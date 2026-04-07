@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27400%27%20height%3D%27400%27%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20dominant-baseline%3D%27middle%27%20text-anchor%3D%27middle%27%20font-family%3D%27Poppins%2C%20sans-serif%27%20font-weight%3D%27bold%27%20font-size%3D%2740%27%20fill%3D%27%232c3e50%27%20opacity%3D%270.05%27%20transform%3D%27rotate(-45%20200%20200)%27%3EATC%20Kariyer%3C%2Ftext%3E%3C%2Fsvg%3E");
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+a {
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+header nav {
+    display: flex;
+    gap: 2rem;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #3498db;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.page.active {
+    display: block;      
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ANA SAYFA */
+.hero {
+    height: 100vh;
+    background: 
+        linear-gradient(135deg, rgba(97, 124, 245, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%),
+        url(logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.hero button {
+    padding: 0.8rem 2rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.hero button:first-of-type {
+    background-color: #3498db;
+    color: white;
+}
+
+.hero button:first-of-type:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.hero button:last-of-type {
+    background-color: white;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.hero button:last-of-type:hover {
+    background-color: #ecf0f1;
+    transform: scale(1.05);
+}
+
+/* AUTH PAGES */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a252f;
+}
+
+.auth-box {
+    background: #2c3e50;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 400px;
+    color: white;
+}
+
+.auth-box h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.auth-box input, .auth-box select {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.7rem 0;
+    border: 1px solid #4a6278;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #34495e;
+    color: white;
+}
+
+.auth-box input:focus, .auth-box select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px #3498db;
+}
+
+.auth-box button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+.auth-box button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+/* JOBS PAGE */
+#jobs {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+#jobs h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+}
+
+.filter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-items: center;
+}
+
+.filter input, .filter select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 250px;
+}
+
+.filter button {
+    padding: 0.8rem 2rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.filter button:hover {
+    background-color: #229954;
+    transform: translateY(-2px);
+}
+
+#jobTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#jobTable th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+#jobTable td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+#jobTable tr:hover {
+    background-color: #f9f9f9;
+}
+
+#jobTable button {
+    padding: 0.5rem 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#jobTable button:hover {
+    background-color: #c0392b;
+}
+
+/* PROFILE PAGE */
+#profile {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#profile h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+}
+
+#profile p {
+    margin: 0.8rem 0;
+    font-size: 1rem;
+}
+
+#profile h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #34495e;
+    font-family: 'Poppins', sans-serif;
+}
+
+#profile input[type="file"] {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#employerPanel {
+    display: none;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #ecf0f1;
+}
+
+#employerPanel.show {
+    display: block;
+}
+
+#employerPanel input, #employerPanel select {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#employerPanel button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #16a085;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+#employerPanel button:hover {
+    background-color: #138870;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    header nav {
+        gap: 1rem;
+    }
+
+    .filter {
+        grid-template-columns: 1fr;
+    }
+
+    #jobTable {
+        font-size: 0.9rem;
+    }
+
+    #jobTable th, #jobTable td {
+        padding: 0.5rem;
+    }
+}
+
+/* YENİ EKLENEN STİLLER */
+
+/* Toast Bildirimleri */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: #333;
+    color: white;
+    padding: 1rem 1.5rem;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    min-width: 250px;
+}
+
+.toast.success { border-left: 5px solid #2ecc71; }
+.toast.error { border-left: 5px solid #e74c3c; }
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Modal (Pencere) */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 5000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #777;
+}
+
+.modal-active { display: flex; }
+
+/* Aksiyon Butonları */
+.btn-action { margin: 0 2px; padding: 5px 10px; font-size: 0.8rem; border-radius: 3px; cursor: pointer; border: none; color: white; }
+.btn-view { background-color: #3498db; }
+.btn-apply { background-color: #27ae60; }
+.btn-save { background-color: #f39c12; }
+.btn-edit { background-color: #9b59b6; }
+.btn-delete { background-color: #e74c3c; }
+.btn-saved { background-color: #7f8c8d; cursor: default; }
+
+.applications-list { margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; }
+.applications-list h3 { margin-bottom: 1rem; color: #2c3e50; }
