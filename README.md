@@ -1,0 +1,1 @@
+# BPR-bitirme-projesi-CV-y-netim-sistemi
